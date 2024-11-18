@@ -2,44 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrolling Header Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Responsive Example</title>
+    <link rel="stylesheet" href="./resources/ol.css">
+    <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/ol3-search-layer.min.css">
+    <link href="resources/ol-geocoder.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+    <link rel="stylesheet" href="./resources/qgis2web.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #86e7eb;
-            overflow: hidden; /* Hide overflow to keep everything neat */
-            margin: 500px; ; /* Remove default margin */
+            margin: 0; /* Remove default margin */
+            background: #ffffff; /* Background color */
         }
 
         .header {
             display: flex;
-            justify-content: center; /* This will push the items to the sides */
-            align-items: center; /* Center items vertically */
-            background-color: #a6cee3; /* Header background color */
-            padding: 10px; /* Padding for spacing */
+            justify-content: space-between;
+            align-items: center;
+            background-color: #a6cee3; 
+            padding: 10px;
+            position: relative; /* Position relative for responsiveness */
+            z-index: 10; /* Positioned above other content */
         }
 
         .header img {
-            width: 50px; /* Set the size of the logo */
-            height: auto; /* Keep the aspect ratio */
-            margin-right: 600px; /* Add some space on the left */
+            max-width: 100%; /* Make Logo responsive */
+            height: auto; /* Keep aspect ratio */
         }
 
         .scrolling-header {
-            white-space: nowrap; /* Prevent line breaks */
-            overflow: hidden; /* Hide overflow */
-            background-color: #a6cee3; /* Background color for visibility */
-            color: #ff0303; /* Text color */
-            font-size: 20px; /* Font size */
-            padding: 20px; /* Padding for spacing */
-            width: 100%; /* Full width */
-            box-sizing: border-box; /* Include padding in width calculation */
+            white-space: nowrap; 
+            overflow: hidden; 
+            background-color: #a6cee3; 
+            color: #ff0303; 
+            font-size: 20px; 
+            padding: 20px; 
+            box-sizing: border-box; 
+            flex-grow: 1; /* Allow it to take available space */
         }
 
-        .scrolling-header img {
-            width: 150px; /* Set the size of the icon */
-            height: 150px; /* Keep the aspect ratio */
+        #map {
+            width: 100%;
+            height: calc(100vh - 100px); /* Adjust height based on header size */
+            position: relative;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .scrolling-header {
+                font-size: 16px; /* Reduce font size on smaller screens */
+            }
+            .header {
+                flex-direction: column; /* Stack items vertically */
+                align-items: flex-start; /* Align items to the start of the flex container */
+            }
+            .header img {
+                width: 80%; /* Scale logo down for mobile */
+            }
         }
     </style>
 </head>
@@ -50,83 +72,32 @@
             Ministry Of Housing & Urban Planning (Cadastral)
         </div>
     </div>
-</body>
-</html>
 
-
-       
-    </div>
-</html>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="./resources/ol.css">
-        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
-        <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
-        <link rel="stylesheet" type="text/css" href="resources/ol3-search-layer.min.css">
-        <link href="resources/ol-geocoder.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
-        <link rel="stylesheet" href="./resources/qgis2web.css">
-        <style>
-        html, body {
-            background-color: #ffffff;
-        }
-        .ol-control > * {
-            background-color: #a3d2d1!important;
-            color: #000000!important;
-            border-radius: 0px;
-        }
-        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
-            color: #000000!important;
-        }
-        .search-layer-input-search {
-            background-color: #a3d2d1!important;
-        }
-        .ol-control > *:focus, .ol-control >*:hover {
-            background-color: rgba(163, 210, 209, 0.7)!important;
-        } 
-        .ol-control {
-            background-color: rgba(255,255,255,.4) !important;
-            padding: 2px !important;
-        } 
-        </style>
-
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
-            <div id="popup" class="ol-popup">
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                <div id="popup-content"></div>
-            </div>
-            <div>
-                <img src='<BSI_str>' style="width:100px; height:auto;"/> <br />
-               
-            </di
-            
-            
+    <div id="map">
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
         </div>
-        <script src="resources/qgis2web_expressions.js"></script>
-        <script src="./resources/functions.js"></script>
-        <script src="./resources/ol.js"></script>
-        <script src="resources/horsey.min.js"></script>
-        <script src="resources/ol3-search-layer.js"></script>
-        <script src="./resources/ol-layerswitcher.js"></script>
-        <script src="resources/ol-geocoder.js"></script>
-        <script src="layers/Prj_AREA_1.js"></script><script src="layers/Cadastral_2.js"></script><script src="layers/polyline_FCAD_3.js"></script><script src="layers/Parcel_No_4.js"></script>
-        <script src="styles/Prj_AREA_1_style.js"></script><script src="styles/Cadastral_2_style.js"></script><script src="styles/polyline_FCAD_3_style.js"></script><script src="styles/Parcel_No_4_style.js"></script>
-        <script src="./layers/layers.js" type="text/javascript"></script> 
-        <script src="./resources/Autolinker.min.js"></script>
-        <script src="./resources/qgis2web.js"></script>
-    </body>
+        <!-- Additional content can be added here if needed -->
+    </div>
+
+    <script src="resources/qgis2web_expressions.js"></script>
+    <script src="./resources/functions.js"></script>
+    <script src="./resources/ol.js"></script>
+    <script src="resources/horsey.min.js"></script>
+    <script src="resources/ol3-search-layer.js"></script>
+    <script src="resources/ol-layerswitcher.js"></script>
+    <script src="resources/ol-geocoder.js"></script>
+    <script src="layers/Prj_AREA_1.js"></script>
+    <script src="layers/Cadastral_2.js"></script>
+    <script src="layers/polyline_FCAD_3.js"></script>
+    <script src="layers/Parcel_No_4.js"></script>
+    <script src="styles/Prj_AREA_1_style.js"></script>
+    <script src="styles/Cadastral_2_style.js"></script>
+    <script src="styles/polyline_FCAD_3_style.js"></script>
+    <script src="styles/Parcel_No_4_style.js"></script>
+    <script src="./layers/layers.js" type="text/javascript"></script> 
+    <script src="./resources/Autolinker.min.js"></script>
+    <script src="./resources/qgis2web.js"></script>
+</body>
 </html>
